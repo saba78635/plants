@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenLeaf Nursery | Fresh Plants & Flowers</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://jsdelivr.net">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. Top Running Announcement Line (Mouse hover par ruk jaye gi) -->
+    <div id="top-ticker" class="ticker-wrapper bg-success text-white py-1 px-3 d-flex align-items-center">
+        <div class="ticker-content flex-grow-1 overflow-hidden">
+            <div class="ticker-text">
+                🌿 Welcome to GreenLeaf Nursery! &nbsp;&nbsp;|&nbsp;&nbsp; 🌸 Fresh Indoor & Outdoor Plants Available &nbsp;&nbsp;|&nbsp;&nbsp; 🚚 Free Home Delivery on Orders Above Rs. 2,000! &nbsp;&nbsp;|&nbsp;&nbsp; 🌱 Bring Nature Closer to Your Home!
+            </div>
+        </div>
+        <button class="btn btn-sm text-white border-0 ms-2 p-0" onclick="toggleTicker()" title="Close Line">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <!-- 2. Simple & Clean Header with Icons -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-success fs-3 d-flex align-items-center" href="#">
+                <i class="bi bi-tree-fill me-2"></i> GreenLeaf
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-semibold gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link active text-success" href="#home"><i class="bi bi-house-door me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#plants"><i class="bi bi-flower2 me-1"></i> Plants</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#care"><i class="bi bi-droplet me-1"></i> Care</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><i class="bi bi-info-circle me-1"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="bi bi-envelope me-1"></i> Contact</a>
+                    </li>
+                </ul>
+                <button class="btn btn-success ms-lg-3 rounded-pill px-3" onclick="showCart()">
+                    <i class="bi bi-bag-heart me-1"></i> Cart (<span id="cart-count">0</span>)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section id="home" class="hero-section d-flex align-items-center text-white">
+        <div class="container text-center">
+            <h1 class="display-3 fw-bold mb-3">Fresh Plants & Blooming Flowers</h1>
+            <p class="lead mb-4">Apne ghar aur baghiche ko taza phoolon aur haryali se sajayein.</p>
+            <a href="#plants" class="btn btn-light btn-lg text-success fw-bold rounded-pill px-5 shadow">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- 3. Plants & Flowers Section with Interactive Images & Detailed Paragraphs -->
+    <section id="plants" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold text-success">Our Fresh Plants & Flowers</h2>
+                <p class="text-muted">Tasveer par mouse le kar jayein aur khoobsurat effect dekhein</p>
+                
+                <!-- Filter Buttons -->
+                <div class="btn-group mt-2" role="group">
+                    <button class="btn btn-success active filter-btn" onclick="filterPlants('all', this)">All</button>
+                    <button class="btn btn-outline-success filter-btn" onclick="filterPlants('indoor', this)">Indoor Plants</button>
+                    <button class="btn btn-outline-success filter-btn" onclick="filterPlants('outdoor', this)">Outdoor Plants</button>
+                    <button class="btn btn-outline-success filter-btn" onclick="filterPlants('flower', this)">Flowers</button>
+                </div>
+            </div>
+
+            <div class="row g-4" id="plant-list">
+                <!-- Plant 1 -->
+                <div class="col-md-4 plant-item" data-category="indoor">
+                    <div class="card h-100 border-0 shadow-sm plant-card">
+                        <div class="img-box">
+                            <img src="https://unsplash.com" class="card-img-top interactive-img" alt="Monstera Plant">
+                        </div>
+                        <div class="card-body text-center">
+                            <span class="badge bg-success-subtle text-success mb-2">Indoor Plant</span>
+                            <h5 class="card-title fw-bold">Monstera Deliciosa</h5>
+                            <p class="text-muted small">Yeh aik bohat khoobsurat indoor pauda hai jo kamre ki hawa ko saaf rakhta hai aur ghar ko modern look deta hai.</p>
+                            <h6 class="fw-bold text-success mb-3">Rs. 1,500</h6>
+                            <button class="btn btn-outline-success w-100 rounded-pill" onclick="addToCart('Monstera Deliciosa')">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plant 2 (Flower) -->
+                <div class="col-md-4 plant-item" data-category="flower">
+                    <div class="card h-100 border-0 shadow-sm plant-card">
+                        <div class="img-box">
+                            <img src="https://unsplash.com" class="card-img-top interactive-img" alt="Red Rose">
+                        </div>
+                        <div class="card-body text-center">
+                            <span class="badge bg-danger-subtle text-danger mb-2">Fresh Flower</span>
+                            <h5 class="card-title fw-bold">English Red Rose</h5>
+                            <p class="text-muted small">Khushboodar aur taza surkh gulab jo aap ki balcony aur garden ki khubsurti ko char chand laga dete hain.</p>
+                            <h6 class="fw-bold text-success mb-3">Rs. 700</h6>
+                            <button class="btn btn-outline-success w-100 rounded-pill" onclick="addToCart('English Red Rose')">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plant 3 (Indoor) -->
+                <div class="col-md-4 plant-item" data-category="indoor">
+                    <div class="card h-100 border-0 shadow-sm plant-card">
+                        <div class="img-box">
+                            <img src="https://unsplash.com" class="card-img-top interactive-img" alt="Snake Plant">
+                        </div>
+                        <div class="card-body text-center">
+                            <span class="badge bg-success-subtle text-success mb-2">Indoor Plant</span>
+                            <h5 class="card-title fw-bold">Snake Plant</h5>
+                            <p class="text-muted small">Kam dhoop aur kam paani mein bhi hamesha hara bhara rehne wala pauda, jo raat ko bhi oxygen deta hai.</p>
+                            <h6 class="fw-bold text-success mb-3">Rs. 950</h6>
+                            <button class="btn btn-outline-success w-100 rounded-pill" onclick="addToCart('Snake Plant')">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plant 4 (Flower) -->
+                <div class="col-md-4 plant-item" data-category="flower">
+                    <div class="card h-100 border-0 shadow-sm plant-card">
+                        <div class="img-box">
+                            <img src="https://unsplash.com" class="card-img-top interactive-img" alt="Sunflower">
+                        </div>
+                        <div class="card-body text-center">
+                            <span class="badge bg-danger-subtle text-danger mb-2">Fresh Flower</span>
+                            <h5 class="card-title fw-bold">Bright Sunflower</h5>
+                            <p class="text-muted small">Suraj ki roshni mein khilne wale chamakdar peele phool jo aap ke lawn ko roshan aur khushgawar banate hain.</p>
+                            <h6 class="fw-bold text-success mb-3">Rs. 550</h6>
+                            <button class="btn btn-outline-success w-100 rounded-pill" onclick="addToCart('Bright Sunflower')">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plant 5 (Outdoor) -->
+                <div class="col-md-4 plant-item" data-category="outdoor">
+                    <div class="card h-100 border-0 shadow-sm plant-card">
+                        <div class="img-box">
+                            <img src="https://unsplash.com" class="card-img-top interactive-img" alt="Aloe Vera">
+                        </div>
+                        <div class="card-body text-center">
